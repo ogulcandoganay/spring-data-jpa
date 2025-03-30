@@ -13,8 +13,8 @@ public class JPQLQueries {
 
     @Test
     public void findByNameOrDescriptionJPQLIndexParam(){
-        Product product = productRepository.findByNameOrDescriptionJPQLIndexParam("description 2",
-                "product 2 description");
+        Product product = productRepository.findByNameOrDescriptionJPQLIndexParam("description 3",
+                "product 3 description");
         System.out.println(product.getId());
         System.out.println(product.getName());
     }

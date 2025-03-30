@@ -129,7 +129,6 @@ class QueryMethodTest {
 
     @Test
     void findByNameIn(){
-
         List<Product> products = productRepository.findByNameIn(List.of("product 2", "ürün a"));
         products.forEach((product) -> {
             System.out.println(product.getId());
@@ -137,8 +136,4 @@ class QueryMethodTest {
             System.out.println(product.getDescription());
         });
     }
-
-
-
-
 }

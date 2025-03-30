@@ -15,3 +15,4 @@ Bazen query method yazarken metod isimleri cok uzun ve cirkin görünebilir.
 bu noktada @Query Anotasyonu ile Custom Query yazabiliriz. Böylece yazdığımız JPQL kodları doğrudan  native
 SQL kodlarına çevrilir, Hibernate tarafından yorumlanıp JDBC olarak döndürülür.
 
+//git kodları yazıldı...
