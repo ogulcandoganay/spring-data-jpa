@@ -23,7 +23,6 @@ public class JPQLQueries {
         System.out.println(product.getName());
     }
 
-    // belli bir price altındaki sorguları silen custom jpql query'si
     @Test
     void deleteByPriceLessThan(){
         productRepository.deleteByPriceLessThan(BigDecimal.valueOf(30));
@@ -32,6 +31,16 @@ public class JPQLQueries {
     @Test
     void findCustomProducts(){
         List<Product> products = productRepository.findCustomProducts("ürün",  BigDecimal.valueOf(70.00));
+        products.forEach((product) -> {
+            System.out.println(product.getId());
+            System.out.println(product.getName());
+        });
+    }
+
+    @Test
+    void findCustomProductsBetweenGap(){
+        List<Product> products = productRepository.findCustomProductsBetweenGap(BigDecimal.valueOf(20),
+                BigDecimal.valueOf(65),"ürün");
         products.forEach((product) -> {
             System.out.println(product.getId());
             System.out.println(product.getName());

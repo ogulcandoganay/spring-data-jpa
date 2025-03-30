@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,5 +58,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT p FROM Product p WHERE p.name LIKE %:keyword% AND p.price < :price")
     List<Product> findCustomProducts(@Param("keyword") String keyword,
                                      @Param("price") BigDecimal price);
+
+    // burda da belli bir fiyat aralıgında olan, icerisinde ürün ismi belirtilen bir query yazdim
+    @Query("SELECT p FROM Product p WHERE p.price BETWEEN :minPrice AND :maxPrice AND p.name LIKE %:keyword%")
+    List<Product> findCustomProductsBetweenGap(@Param("minPrice") BigDecimal minPrice,
+                                               @Param("maxPrice")BigDecimal maxPrice,
+                                               @Param("keyword")String keyword);
 
 }
