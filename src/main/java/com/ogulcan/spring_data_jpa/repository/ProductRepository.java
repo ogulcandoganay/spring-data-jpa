@@ -1,7 +1,9 @@
 package com.ogulcan.spring_data_jpa.repository;
 
 import com.ogulcan.spring_data_jpa.entity.Product;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -47,5 +49,15 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Product findByNameOrDescriptionJPQLNamedParam(@Param("name") String name,
                                                   @Param("desc") String description);
 
+    // belli bir price altındaki sorguları silen custom jpql query'si
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM Product p where p.price < :price")
+    void deleteByPriceLessThan(@Param("price") BigDecimal price);
+
+    // burda icerisinde ürün adını verdiğimiz ve fiyati belli bir miktardan kücük olan ürünler icin query yazdım
+    @Query("SELECT p FROM Product p WHERE p.name LIKE %:keyword% AND p.price < :price")
+    List<Product> findCustomProducts(@Param("keyword") String keyword,
+                                     @Param("price") BigDecimal price);
 
 }
