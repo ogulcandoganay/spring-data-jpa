@@ -1,0 +1,50 @@
+GITHUB DOCS:
+
+Eğer yeni bir repo oluşturulacaksa,
+
+GitHub'a gir: GitHub
+
+New Repository oluştur.
+
+Proje adı gir, Private/Public olarak ayarla.
+
+"Create Repository" butonuna bas.
+
+Açılan sayfadaki remote URL'yi kopyala. (örn: https://github.com/kullaniciadi/projeadi.git)
+
+GitHub’daki repo linkini kullanarak projeyi çek:
+
+[ git clone https://github.com/Uknownothing/spring-data-jpa.git ]
+
+[ git add . ] -> komutuyla değişiklikleri git'e ekle.
+
+[ git commit -m "degisiklik" ] -> komutunu kullanarak bu değişiklikleri commit'le.
+
+[ git push origin main ] -> komutunu kullanarak değişikliklerini GitHub'a göndermeyi unutma.
+
+** Degisikleri pull edecek bilgisayardan ise;
+
+git config --global user.name "Oğulcan"
+
+git config --global user.email "ogulcan428@gmail.com"
+
+[ git pull origin main ] -> komutuyla son değişiklikleri çek.
+
+eğer,
+
+yerel depoda yaptığınız değişikliklerin, git pull komutuyla gelen güncellemelerle çakışıyorsa,
+
+1) Değişiklikler commit edilebilir
+
+	git add .
+	git commit -m "Yerel değişiklikler kaydedildi"
+
+2) Değişiklikler geri alınabilir.
+
+	git checkout -- .
+
+böylece çakışma ortadan kalkar ve tekrar pull edilebilir.
+
+git pull origin main
+
+
