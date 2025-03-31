@@ -3,7 +3,6 @@ Query Method Generation:
 JPA, Repository katmanında yazdığımız method'ları, bizim için JPQL sorgusuna çevirir. Sonra Hibernate, JPQL'i alır,
 uygun SQL sorgusuna dönüştürür ve veritabanından almak için JDBC kullanır.
 
-
 NoSuchElementException runtime sınıfından türeyen bir exception'dur. Optional kullanılınca, eğer db'de o kayıt yoksa
 NPE yerine bu hatayı fırlatır.
 
@@ -11,8 +10,17 @@ Ama eğer veritabanında her aynı isimli ürün için farklı özellikler varsa
 ve hepsini görmek istiyorsan, findByName kullanmalısın.
 
 Bazen query method yazarken metod isimleri cok uzun ve cirkin görünebilir.
-"findByDescriptionContainstOrNameContainsAllIgnoreCase" gibi :)
+"findByDescriptionContainstOrNameContainsAllIgnoreCase" gibi.
 bu noktada @Query Anotasyonu ile Custom Query yazabiliriz. Böylece yazdığımız JPQL kodları doğrudan  native
 SQL kodlarına çevrilir, Hibernate tarafından yorumlanıp JDBC olarak döndürülür.
 
-//git kodları yazıldı...
+ @Entity anotasyonu zaten sınıfın bir veritabanı tablosu ile ilişkili olduğunu belirtir.
+ Ancak @Data anotasyonu, veritabanı ile ilişkilendirmekten farklı bir amaç taşır. Dolayısıyla @Data kullandıgımız
+ zaman, @Getter, @Setter, @ToString kullanmaya gerek kalmaz.
+
+ Not : CascadeType.All ilişkisi verdiğimiz tablo yapılarında, eğer tablodaki işlemleri MYSQL Workbench üzerinden
+ (örnek delete row gibi) yaptığımız zaman, cascadetpye.all işlemi devreye girmez. sebebi,
+    Hibernate, ilişkileri yönetirken JPA üzerinden yapılan işlemleri takip eder.
+    Eğer SQL sorgusunu elle çalıştırırsan (DELETE FROM orders WHERE id = 1; gibi), Hibernate bundan habersiz olur.
+    Cascade işlemi sadece JPA tarafından tetiklenen delete işlemlerinde çalışır.
+

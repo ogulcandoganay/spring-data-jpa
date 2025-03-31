@@ -1,0 +1,9 @@
+Cascade Types
+1) One-to-One Mapping
+    Örnek olarak, User -> User profile, Employee -> Employee detail verilebilir.
+    a)Unidirectional one-to-one mapping:
+        Burda tek yonlu bir iliskiden söz ederiz.
+
+2)
+
+
