@@ -18,11 +18,6 @@ public class Adress {
     private String country;
     private String zipCode;
 
-
-
-
-
-
     // Macbook'taki Lombok hatası sebebiyle Getter Setter da oluşturuyorum
 
     public Long getId() {

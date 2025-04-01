@@ -42,11 +42,6 @@ public class Order {
     @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
     private Adress billingAdress;
 
-
-
-
-
-
     // Macbook'taki Lombok hatası sebebiyle Getter Setter da oluşturuyorum
 
     public Long getId() {

@@ -56,9 +56,6 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
-
-
-
     // Setter ve Getter
 
     public Long getId() {

@@ -46,6 +46,4 @@ public class JPQLQueries {
             System.out.println(product.getName());
         });
     }
-
-
 }
