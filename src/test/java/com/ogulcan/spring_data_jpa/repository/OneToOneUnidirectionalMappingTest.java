@@ -3,8 +3,6 @@ package com.ogulcan.spring_data_jpa.repository;
 import com.ogulcan.spring_data_jpa.entity.Adress;
 import com.ogulcan.spring_data_jpa.entity.Order;
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.TransactionScoped;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

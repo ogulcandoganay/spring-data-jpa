@@ -136,5 +136,4 @@ public class OneToOneBidirectionalMapping {
         );
         System.out.println("Updated Rows: " + updatedCount);
     }
-
 }
