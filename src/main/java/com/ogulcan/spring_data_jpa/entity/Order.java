@@ -11,6 +11,11 @@ import java.util.Date;
 
 @Data
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Table(
         name = "orders",
         uniqueConstraints = {
@@ -20,8 +25,6 @@ import java.util.Date;
                 )
         }
 )
-@AllArgsConstructor
-@NoArgsConstructor
 public class Order {
 
     @Id

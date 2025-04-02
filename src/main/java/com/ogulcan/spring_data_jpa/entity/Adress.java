@@ -1,9 +1,13 @@
 package com.ogulcan.spring_data_jpa.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "adresses")
 public class Adress {
@@ -23,7 +27,6 @@ public class Adress {
     private Order order;
 
     // Macbook'taki Lombok hatası sebebiyle Getter Setter da oluşturuyorum
-
 
     public Long getId() {
         return id;
