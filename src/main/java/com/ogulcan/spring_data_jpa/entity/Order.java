@@ -38,8 +38,7 @@ public class Order {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "billing_address_id", referencedColumnName = "id")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Adress billingAdress;
 
     // Macbook'taki Lombok hatası sebebiyle Getter Setter da oluşturuyorum

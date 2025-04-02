@@ -24,3 +24,11 @@ SQL kodlarına çevrilir, Hibernate tarafından yorumlanıp JDBC olarak döndür
     Eğer SQL sorgusunu elle çalıştırırsan (DELETE FROM orders WHERE id = 1; gibi), Hibernate bundan habersiz olur.
     Cascade işlemi sadece JPA tarafından tetiklenen delete işlemlerinde çalışır.
 
+@Modifying ve @Transactional sadece silme işlemleri için değil, güncelleme (update) ve ekleme (insert)
+işlemleri için de kullanılır.
+@Modifying: Bu anotasyon, veritabanındaki verileri değiştiren işlemler için gereklidir. Yani silme, güncelleme,
+veya ekleme gibi veri manipülasyonu yapan işlemlerde bu anotasyonu kullanmalısınız. Ancak, sadece
+veri sorgulama (select) işlemleri için gerekmez.
+@Transactional: Bu anotasyon, işlem (transaction) bütünlüğünü sağlamak için kullanılır. Yani, bir işlem
+sırasında birkaç veri manipülasyonu yapıyorsanız ve bir hata oluşursa, tüm işlemin geri alınmasını (rollback) sağlar.
+Bu sayede veritabanı tutarlılığını korur. Ayrıca, silme, güncelleme, ekleme işlemleri için de kullanılır.

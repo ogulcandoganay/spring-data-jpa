@@ -18,7 +18,12 @@ public class Adress {
     private String country;
     private String zipCode;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Order order;
+
     // Macbook'taki Lombok hatası sebebiyle Getter Setter da oluşturuyorum
+
 
     public Long getId() {
         return id;
@@ -68,6 +73,13 @@ public class Adress {
         this.zipCode = zipCode;
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
     @Override
     public String toString() {
