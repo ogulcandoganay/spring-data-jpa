@@ -3,11 +3,9 @@ package com.ogulcan.spring_data_jpa.repository;
 import com.ogulcan.spring_data_jpa.entity.Adress;
 import com.ogulcan.spring_data_jpa.entity.Order;
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.Modifying;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -27,7 +25,7 @@ public class OneToOneBidirectionalMapping {
     @Test
     void saveAdressMethod(){
         Order order = new Order();
-        order.setOrderTrackingNumber("106ABC");
+        order.setOrderTrackingNumber("101ABC");
         order.setTotalQuantity(5);
         order.setStatus("DELIVERED");
         order.setTotalPrice(new BigDecimal(2500));
@@ -49,7 +47,7 @@ public class OneToOneBidirectionalMapping {
     void saveAllAdressMethod(){
 
         Order order = new Order();
-        order.setOrderTrackingNumber("113ABC");
+        order.setOrderTrackingNumber("102ABC");
         order.setTotalQuantity(5);
         order.setStatus("DELIVERED");
         order.setTotalPrice(new BigDecimal(700));
@@ -65,7 +63,7 @@ public class OneToOneBidirectionalMapping {
         adress.setOrder(order);
 
         Order order2 = new Order();
-        order2.setOrderTrackingNumber("114ABC");
+        order2.setOrderTrackingNumber("103ABC");
         order2.setTotalQuantity(5);
         order2.setStatus("DELIVERED");
         order2.setTotalPrice(new BigDecimal(600));
@@ -81,7 +79,7 @@ public class OneToOneBidirectionalMapping {
         adress2.setOrder(order2);
 
         Order order3 = new Order();
-        order3.setOrderTrackingNumber("115ABC");
+        order3.setOrderTrackingNumber("104ABC");
         order3.setTotalQuantity(5);
         order3.setStatus("CANCELLED");
         order3.setTotalPrice(new BigDecimal(650));

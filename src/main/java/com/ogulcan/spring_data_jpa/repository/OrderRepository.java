@@ -28,9 +28,9 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findByPriceAndStatus(@Param("price") BigDecimal price,
                                      @Param("status") String status);
 
-    // Belirli bir ülke (country) ve belirli bir fiyat aralığı (totalPrice) için siparişleri (orders) bul.
-    // Bu siparişlerin adreslerini (adress) güncelle. Yeni şehir (city) ve posta kodu (zipCode) değerlerini
-    // veritabanına yansıtan bir custom query yaz
+//     Belirli bir ülke (country) ve belirli bir fiyat aralığı (totalPrice) için siparişleri (orders) bul.
+//     Bu siparişlerin adreslerini (adress) güncelle. Yeni şehir (city) ve posta kodu (zipCode) değerlerini
+//     veritabanına yansıtan bir custom query yaz
     @Modifying
     @Transactional
     @Query("UPDATE Adress a SET a.city = :newCity, a.zipCode = :newZipCode " +

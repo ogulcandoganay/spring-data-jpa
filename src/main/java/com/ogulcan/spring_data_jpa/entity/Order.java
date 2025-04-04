@@ -7,7 +7,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Entity
@@ -46,6 +45,7 @@ public class Order {
 
     // Macbook'taki Lombok hatası sebebiyle Getter Setter da oluşturuyorum
 
+
     public Long getId() {
         return id;
     }
@@ -54,44 +54,12 @@ public class Order {
         this.id = id;
     }
 
-    public String getOrderTrackingNumber() {
-        return orderTrackingNumber;
+    public Adress getBillingAdress() {
+        return billingAdress;
     }
 
-    public void setOrderTrackingNumber(String orderTrackingNumber) {
-        this.orderTrackingNumber = orderTrackingNumber;
-    }
-
-    public int getTotalQuantity() {
-        return totalQuantity;
-    }
-
-    public void setTotalQuantity(int totalQuantity) {
-        this.totalQuantity = totalQuantity;
-    }
-
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(LocalDateTime dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setBillingAdress(Adress billingAdress) {
+        this.billingAdress = billingAdress;
     }
 
     public LocalDateTime getLastUpdated() {
@@ -102,12 +70,44 @@ public class Order {
         this.lastUpdated = lastUpdated;
     }
 
-    public Adress getBillingAdress() {
-        return billingAdress;
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
     }
 
-    public void setBillingAdress(Adress billingAdress) {
-        this.billingAdress = billingAdress;
+    public void setDateCreated(LocalDateTime dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public int getTotalQuantity() {
+        return totalQuantity;
+    }
+
+    public void setTotalQuantity(int totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public String getOrderTrackingNumber() {
+        return orderTrackingNumber;
+    }
+
+    public void setOrderTrackingNumber(String orderTrackingNumber) {
+        this.orderTrackingNumber = orderTrackingNumber;
     }
 
     @Override
@@ -120,6 +120,7 @@ public class Order {
                 ", status='" + status + '\'' +
                 ", dateCreated=" + dateCreated +
                 ", lastUpdated=" + lastUpdated +
+                ", billingAdress=" + billingAdress +
                 '}';
     }
 }

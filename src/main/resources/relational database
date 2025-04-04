@@ -1,9 +1,22 @@
 Cascade Types
 1) One-to-One Mapping
     Örnek olarak, User -> User profile, Employee -> Employee detail verilebilir.
-    a)Unidirectional one-to-one mapping:
-        Burda tek yonlu bir iliskiden söz ederiz.
 
-2)
+    1. @OneToOne İlişkisi
+    1.1 Unidirectional @OneToOne
+    Bir entity'den diğerine tek yönlü erişim vardır.
+    @JoinColumn anotasyonu foreign key sütununun adını özelleştirmek için kullanılır. Eğer bu anotasyonu yazmazsan,
+    Hibernate varsayılan bir isim belirler.
+    In Unidirectional type, source entity has a relationship field that refers to target entity and source entity's
+    table contains the foreign key  of target entity table.
+
+2) Bidirectional Type
+   In bidirectional type, each entity (i.e source and target) has a relationship field that refers to each other
+   and target entity' table contains the foreign key. The source entity must use the mappedBy attribute to the define
+   bidirectional on-to-one mapping.
+   Burda @OneToOne diye iki tarafa da yazarız
+   (inverse side) -> iliski sahibi olmayan taraf
+   (owner side) -> iliski sahibi olan taraf
+
 
 

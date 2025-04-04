@@ -22,17 +22,17 @@ public class OneToOneUnidirectionalMappingTest {
     @Test
     void saveOrderMethod(){
         Order order = new Order();
-        order.setOrderTrackingNumber("105ABC");
+        order.setOrderTrackingNumber("101ABC");
         order.setTotalQuantity(5);
         order.setStatus("DELIVERED");
-        order.setTotalPrice(new BigDecimal(9303));
+        order.setTotalPrice(new BigDecimal(1500));
 
         Adress adress = new Adress();
         adress.setCity("Marsillie");
         adress.setStreet("le' conte");
         adress.setState("Fraples");
         adress.setCountry("Fransa");
-        adress.setZipCode("10S257");
+        adress.setZipCode("F10R257");
 
         order.setBillingAdress(adress);
 
@@ -40,9 +40,45 @@ public class OneToOneUnidirectionalMappingTest {
     }
 
     @Test
+    void saveAllOrderMethod(){
+        Order order = new Order();
+        order.setOrderTrackingNumber("102ABC");
+        order.setTotalQuantity(15);
+        order.setStatus("DELIVERED");
+        order.setTotalPrice(new BigDecimal(2500));
+
+        Adress adress = new Adress();
+        adress.setCity("Istanbul");
+        adress.setStreet("Medipol");
+        adress.setState("Basaksehir");
+        adress.setCountry("Türkiye");
+        adress.setZipCode("T10R447");
+
+        order.setBillingAdress(adress);
+
+        Order order2 = new Order();
+        order2.setOrderTrackingNumber("103ABC");
+        order2.setTotalQuantity(15);
+        order2.setStatus("DELIVERED");
+        order2.setTotalPrice(new BigDecimal(2500));
+
+        Adress adress2 = new Adress();
+        adress2.setCity("Istanbul");
+        adress2.setStreet("Boğa");
+        adress2.setState("Kadıköy");
+        adress2.setCountry("Türkiye");
+        adress2.setZipCode("T10R889");
+
+        order2.setBillingAdress(adress2);
+
+        orderRepository.saveAll(List.of(order,order2));
+
+    }
+
+    @Test
     void updateOrderMethod(){
         Order order = orderRepository.findById(1L).get();
-        order.setOrderTrackingNumber("102ABC");
+        order.setOrderTrackingNumber("103ABC");
         order.setTotalQuantity(5);
         order.setStatus("DELIVERED");
         order.setTotalPrice(new BigDecimal(1000));
@@ -63,7 +99,7 @@ public class OneToOneUnidirectionalMappingTest {
 
     @Test
     void deleteOrderMethod(){
-        orderRepository.deleteById(10L);
+        orderRepository.deleteById(9L);
     }
 
     @Test
