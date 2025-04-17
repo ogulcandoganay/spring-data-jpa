@@ -7,6 +7,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -43,84 +45,17 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Adress billingAdress;
 
-    // Macbook'taki Lombok hatası sebebiyle Getter Setter da oluşturuyorum
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Adress getBillingAdress() {
-        return billingAdress;
-    }
-
-    public void setBillingAdress(Adress billingAdress) {
-        this.billingAdress = billingAdress;
-    }
-
-    public LocalDateTime getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(LocalDateTime lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
-
-    public LocalDateTime getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(LocalDateTime dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    private Set<OrderItem> orderItems = new HashSet<>();
 
     public BigDecimal getTotalPrice() {
-        return totalPrice;
+        BigDecimal amount = new BigDecimal(0);
+        for (OrderItem item : this.orderItems) {
+            amount = amount.add(item.getPrice());
+        }
+        return amount;
     }
+    // Macbook'taki Lombok hatası sebebiyle Getter Setter da oluşturuyorum
 
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public int getTotalQuantity() {
-        return totalQuantity;
-    }
-
-    public void setTotalQuantity(int totalQuantity) {
-        this.totalQuantity = totalQuantity;
-    }
-
-    public String getOrderTrackingNumber() {
-        return orderTrackingNumber;
-    }
-
-    public void setOrderTrackingNumber(String orderTrackingNumber) {
-        this.orderTrackingNumber = orderTrackingNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", orderTrackingNumber='" + orderTrackingNumber + '\'' +
-                ", totalQuantity=" + totalQuantity +
-                ", totalPrice=" + totalPrice +
-                ", status='" + status + '\'' +
-                ", dateCreated=" + dateCreated +
-                ", lastUpdated=" + lastUpdated +
-                ", billingAdress=" + billingAdress +
-                '}';
-    }
 }

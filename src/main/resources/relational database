@@ -20,3 +20,10 @@ Cascade Types
 
 
 
+
+   One To Many Mapping
+   1. Foreign Key (FK) her zaman "çok olan" tarafa yazılır.
+   @OneToMany ilişkisinde “çok olan” taraf, FK’yı taşımalıdır.
+
+
+
